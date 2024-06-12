@@ -23,13 +23,14 @@ namespace AfterimagePlus
             time += Time.deltaTime;
             if (time > AfterimagePlus.Instance.settings.interval)
             {
+
+                Vector3 pos = transform.position;
+                pos.z += 1e-3f;
+                GameObject newAfterimageFrame = pool.SpawnBlankAfterimage(pos, transform.rotation, transform.localScale);
+
                 try
                 {
                     time = 0;
-
-                    Vector3 pos = transform.position;
-                    pos.z += 1e-3f;
-                    GameObject newAfterimageFrame = pool.SpawnBlankAfterimage(pos, transform.rotation, transform.localScale);
 
                     tk2dSpriteAnimator originalAnimator = gameObject.GetComponent<tk2dSpriteAnimator>();
                     tk2dSpriteAnimator newAnimtator = newAfterimageFrame.GetOrAddComponent<tk2dSpriteAnimator>();
@@ -50,7 +51,8 @@ namespace AfterimagePlus
                 }
                 catch (Exception ex)
                 {
-                    AfterimagePlus.Instance.Log(ex);
+                    Destroy(newAfterimageFrame);
+                    //AfterimagePlus.Instance.Log(ex);
                 }
             }
         }

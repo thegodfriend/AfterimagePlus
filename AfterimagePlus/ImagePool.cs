@@ -30,6 +30,7 @@ namespace AfterimagePlus
             else
             {
                 newBlankImage = UnityEngine.Object.Instantiate(imageTemplate);
+                newBlankImage.SetActive(true);
             }
 
             newBlankImage.transform.position = position;
