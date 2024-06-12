@@ -25,7 +25,7 @@ namespace AfterimagePlus
         //}
 
         public AfterimagePlus() : base("Afterimage †") { }
-        public override string GetVersion() => "0.0.0.1";
+        public override string GetVersion() => "0.0.0.2";
 
         public override void Initialize(Dictionary<string, Dictionary<string, GameObject>> preloadedObjects)
         {
@@ -38,6 +38,7 @@ namespace AfterimagePlus
             GameObject afterimageTemplate = new();
             afterimageTemplate.AddComponent<tk2dSprite>();
             afterimageTemplate.AddComponent<tk2dSpriteAnimator>();
+            UnityEngine.Object.DontDestroyOnLoad(afterimageTemplate);
             afterimagePool.SetTemplate(afterimageTemplate);
 
             Log("Initialized");
