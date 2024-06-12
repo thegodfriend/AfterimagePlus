@@ -1,15 +1,20 @@
 ﻿using Modding;
+using Modding.Utils;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.GridBrushBase;
 using UObject = UnityEngine.Object;
 
 namespace AfterimagePlus
 {
     public class AfterimagePlus : Mod
     {
-        internal static AfterimagePlus Instance;
+        public static AfterimagePlus Instance;
+
+        public Settings settings = new();
+        internal ImagePool afterimagePool = new();
 
         //public override List<ValueTuple<string, string>> GetPreloadNames()
         //{
@@ -28,7 +33,20 @@ namespace AfterimagePlus
 
             Instance = this;
 
+            ModHooks.HeroUpdateHook += HeroUpdateHook;
+
+            GameObject afterimageTemplate = new();
+            afterimageTemplate.AddComponent<tk2dSprite>();
+            afterimageTemplate.AddComponent<tk2dSpriteAnimator>();
+            afterimagePool.SetTemplate(afterimageTemplate);
+
             Log("Initialized");
         }
+
+        private void HeroUpdateHook()
+        {
+            HeroController.instance.gameObject.GetOrAddComponent<AfterimageGenerator>();
+        }
+
     }
 }
