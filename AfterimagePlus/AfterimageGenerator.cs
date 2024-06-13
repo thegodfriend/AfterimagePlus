@@ -33,9 +33,9 @@ namespace AfterimagePlus
                     time = 0;
 
                     tk2dSpriteAnimator originalAnimator = gameObject.GetComponent<tk2dSpriteAnimator>();
-                    tk2dSpriteAnimator newAnimtator = newAfterimageFrame.GetOrAddComponent<tk2dSpriteAnimator>();
-                    newAnimtator.SetSprite(originalAnimator.Sprite.Collection, originalAnimator.Sprite.spriteId);
-                    newAnimtator.Library = originalAnimator.Library;
+                    tk2dSpriteAnimator newAnimator = newAfterimageFrame.GetOrAddComponent<tk2dSpriteAnimator>();
+                    newAnimator.SetSprite(originalAnimator.Sprite.Collection, originalAnimator.Sprite.spriteId);
+                    newAnimator.Library = originalAnimator.Library;
 
                     tk2dSpriteAnimationClip originalClip = originalAnimator.CurrentClip;
                     tk2dSpriteAnimationClip newClip = new tk2dSpriteAnimationClip();
@@ -47,7 +47,7 @@ namespace AfterimagePlus
                     AfterimageFrameAnimator frameAnimator = newAfterimageFrame.GetOrAddComponent<AfterimageFrameAnimator>();
                     frameAnimator.clip = newClip;
 
-                    newAnimtator.enabled = false;
+                    newAnimator.enabled = false;
                 }
                 catch (Exception ex)
                 {
