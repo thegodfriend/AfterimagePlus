@@ -32,6 +32,7 @@ namespace AfterimagePlus
             Instance = this;
 
             ModHooks.HeroUpdateHook += HeroUpdateHook;
+            ModHooks.OnEnableEnemyHook += ModHooks_OnEnableEnemyHook;
 
             GameObject afterimageTemplate = new();
             afterimageTemplate.AddComponent<tk2dSprite>();
@@ -42,6 +43,12 @@ namespace AfterimagePlus
             afterimagePool.SetTemplate(afterimageTemplate);
 
             Log("Initialized");
+        }
+
+        private bool ModHooks_OnEnableEnemyHook(GameObject enemy, bool isAlreadyDead)
+        {
+            enemy.GetOrAddComponent<AfterimageGenerator>();
+            return isAlreadyDead;
         }
 
         private void HeroUpdateHook()
