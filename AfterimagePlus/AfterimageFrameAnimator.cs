@@ -10,8 +10,10 @@ namespace AfterimagePlus
 {
     internal class AfterimageFrameAnimator : MonoBehaviour
     {
-        public tk2dSpriteAnimationClip clip;
         private float time;
+
+        public tk2dSpriteAnimationClip clip;
+        public Color color;
 
         void Update()
         {
@@ -19,7 +21,7 @@ namespace AfterimagePlus
             animator.Play(clip);
 
             time += Time.deltaTime;
-            animator.Sprite.color = new Color(1, 1, 1, (1 - time / AfterimagePlus.Instance.settings.fadeTime));
+            animator.Sprite.color = new Color(color.r, color.g, color.b, color.a * (1 - time / AfterimagePlus.Instance.settings.fadeTime));
             if (time > AfterimagePlus.Instance.settings.fadeTime)
             {
                 time = 0;

@@ -13,10 +13,12 @@ namespace AfterimagePlus
         private ImagePool pool = AfterimagePlus.Instance.afterimagePool;
         private float time;
 
-        /*public void SetPool(ImagePool setTo)
+        private Color afterimageColor = new Color(0.5f,0.5f,0.5f,1);
+
+        public void SetAfterimageColor(Color setTo)
         {
-            pool = setTo;
-        }*/
+            afterimageColor = setTo;
+        }
 
         private void Update()
         {
@@ -46,6 +48,7 @@ namespace AfterimagePlus
 
                     AfterimageFrameAnimator frameAnimator = newAfterimageFrame.GetOrAddComponent<AfterimageFrameAnimator>();
                     frameAnimator.clip = newClip;
+                    frameAnimator.color = afterimageColor;
 
                     newAnimator.enabled = false;
 
