@@ -52,7 +52,7 @@ namespace AfterimagePlus
 
         private bool ModHooks_OnEnableEnemyHook(GameObject enemy, bool isAlreadyDead)
         {
-            if (settings.enemyAfterimageOn) enemy.GetOrAddComponent<AfterimageGenerator>().SetAfterimageColor(new Color(0.5f, 0.25f, 0.25f, 1));
+            if (settings.enemyAfterimageOn) enemy.GetOrAddComponent<AfterimageGenerator>().SetAfterimageColor(new Color(0.25f, 0.25f, 0.5f, 1));
 
             return isAlreadyDead;
         }
@@ -109,6 +109,47 @@ namespace AfterimagePlus
                         }
                     },
                     Loader = () => settings.enemyAfterimageOn ? 0 : 1
+                }
+            );
+            menus.Add(
+                new()
+                {
+                    Name = "Afterimage Decay Time",
+                    Values = new string[]
+                    {
+                        "0.00",
+                        "0.10",
+                        "0.20",
+                        "0.30",
+                        "0.40",
+                        "0.50",
+                        "0.60",
+                        "0.70",
+                        "0.80",
+                        "0.90",
+                        "1.00",
+                    },
+                    Saver = i => settings.decayTime = i/10f,
+                    Loader = () => (int)(settings.decayTime * 10)
+                }
+            );
+            menus.Add(
+                new()
+                {
+                    Name = "Afterimage Intervals",
+                    Values = new string[]
+                    {
+                        "0.025",
+                        "0.050",
+                        "0.075",
+                        "0.100",
+                        "0.125",
+                        "0.150",
+                        "0.175",
+                        "0.200",
+                    },
+                    Saver = i => settings.interval = (i + 1) / 40f,
+                    Loader = () => (int)(settings.interval * 40) - 1
                 }
             );
             return menus;

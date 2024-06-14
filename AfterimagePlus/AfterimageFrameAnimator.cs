@@ -21,8 +21,8 @@ namespace AfterimagePlus
             animator.Play(clip);
 
             time += Time.deltaTime;
-            animator.Sprite.color = new Color(color.r, color.g, color.b, color.a * (1 - time / AfterimagePlus.Instance.settings.fadeTime));
-            if (time > AfterimagePlus.Instance.settings.fadeTime)
+            animator.Sprite.color = new Color(color.r, color.g, color.b, color.a * (1 - time / AfterimagePlus.Instance.settings.decayTime));
+            if (time > AfterimagePlus.Instance.settings.decayTime)
             {
                 time = 0;
                 gameObject.SetActive(false);

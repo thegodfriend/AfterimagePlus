@@ -12,7 +12,7 @@ namespace AfterimagePlus
         public bool knightAfterimageOn;
         public bool enemyAfterimageOn;
 
-        public float fadeTime = 0.5f;
+        public float decayTime = 0.5f;
         public float interval = 0.1f;
 
     }
