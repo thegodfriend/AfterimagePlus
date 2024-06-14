@@ -48,6 +48,11 @@ namespace AfterimagePlus
                     frameAnimator.clip = newClip;
 
                     newAnimator.enabled = false;
+
+                    foreach (Collider2D collider in newAfterimageFrame.GetComponents<Collider2D>())
+                    {
+                        Destroy(collider);
+                    }
                 }
                 catch (Exception ex)
                 {
