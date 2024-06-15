@@ -174,6 +174,72 @@ namespace AfterimagePlus
                     Loader = () => (int)(settings.fullStrength * 10)
                 }
             );
+            menus.Add(
+                new()
+                {
+                    Name = "Red %",
+                    Values = new string[]
+                    {
+                        "0",
+                        "10",
+                        "20",
+                        "30",
+                        "40",
+                        "50",
+                        "60",
+                        "70",
+                        "80",
+                        "90",
+                        "100",
+                    },
+                    Saver = i => settings.red = i / 10f,
+                    Loader = () => (int)(settings.red * 10)
+                }
+            );
+            menus.Add(
+                new()
+                {
+                    Name = "Green %",
+                    Values = new string[]
+                    {
+                        "0",
+                        "10",
+                        "20",
+                        "30",
+                        "40",
+                        "50",
+                        "60",
+                        "70",
+                        "80",
+                        "90",
+                        "100",
+                    },
+                    Saver = i => settings.green = i / 10f,
+                    Loader = () => (int)(settings.green * 10)
+                }
+            );
+            menus.Add(
+                new()
+                {
+                    Name = "Blue %",
+                    Values = new string[]
+                    {
+                        "0",
+                        "10",
+                        "20",
+                        "30",
+                        "40",
+                        "50",
+                        "60",
+                        "70",
+                        "80",
+                        "90",
+                        "100",
+                    },
+                    Saver = i => settings.blue = i / 10f,
+                    Loader = () => (int)(settings.blue * 10)
+                }
+            );
             return menus;
 
         }
