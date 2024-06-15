@@ -28,7 +28,7 @@ namespace AfterimagePlus
         //}
 
         public AfterimagePlus() : base("Afterimage †") { }
-        public override string GetVersion() => "0.0.2-0";
+        public override string GetVersion() => "1.0.0";
 
         public override void Initialize(Dictionary<string, Dictionary<string, GameObject>> preloadedObjects)
         {
