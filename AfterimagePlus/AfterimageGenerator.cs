@@ -13,17 +13,20 @@ namespace AfterimagePlus
         private ImagePool pool = AfterimagePlus.Instance.afterimagePool;
         private float time;
 
-        private Color afterimageColor = new Color(0.5f,0.5f,0.5f,1);
+        //private Color afterimageColor = new Color(0.5f,0.5f,0.5f,1);
 
-        public void SetAfterimageColor(Color setTo)
+        /*public void SetAfterimageColor(Color setTo)
         {
             afterimageColor = setTo;
-        }
+        }*/
 
         private void Update()
         {
+
+            Settings settings = AfterimagePlus.Instance.settings;
+
             time += Time.deltaTime;
-            if (time > AfterimagePlus.Instance.settings.interval)
+            if (time > settings.interval)
             {
 
                 Vector3 pos = transform.position;
@@ -48,7 +51,7 @@ namespace AfterimagePlus
 
                     AfterimageFrameAnimator frameAnimator = newAfterimageFrame.GetOrAddComponent<AfterimageFrameAnimator>();
                     frameAnimator.clip = newClip;
-                    frameAnimator.color = afterimageColor;
+                    frameAnimator.color = new Color(settings.red, settings.green, settings.blue, settings.fullStrength);//afterimageColor;
 
                     newAnimator.enabled = false;
 

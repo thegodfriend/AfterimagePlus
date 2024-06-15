@@ -15,5 +15,9 @@ namespace AfterimagePlus
         public float decayTime = 0.5f;
         public float interval = 0.1f;
 
+        public float red = 0.25f;
+        public float green = 0.25f;
+        public float blue = 0.5f;
+        public float fullStrength = 0.5f;
     }
 }
